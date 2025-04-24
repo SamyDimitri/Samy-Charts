@@ -1,35 +1,39 @@
-import React from 'react'
-import { SimpleGrid, Box, Icon, Heading, Text } from '@chakra-ui/react'
-import { FiDatabase, FiZap, FiUsers } from 'react-icons/fi'
+import React from "react";
+import { SimpleGrid, Box, Icon, Heading, Text } from "@chakra-ui/react";
+import { FiDatabase, FiZap, FiUsers } from "react-icons/fi";
 
 const features = [
   {
-    icon: FiDatabase,
-    title: 'Native Fyers API',
-    desc: 'Real-time & historical data from Fyers for NSE/BSE stocks.'
+    icon: FiDatabase, // Pass the icon component itself
+    title: "Native Fyers API",
+    description: "Real-time & historical market data from Fyers, exclusively for NSE/BSE stocks. Seamlessly integrated for superior performance.",
   },
   {
-    icon: FiZap,
-    title: 'Instant Lazy Loading',
-    desc: 'Fetch only visible data chunks; super-fast rendering.'
+    icon: FiZap, // Pass the icon component itself
+    title: "Instant Lazy Loading",
+    description: "Fetch only visible data chunks to ensure lightning-fast chart rendering — no more waiting for slow data loads.",
   },
   {
-    icon: FiUsers,
-    title: 'Community Scripts',
-    desc: 'Share and use custom indicators built by our community.'
-  }
-]
+    icon: FiUsers, // Pass the icon component itself
+    title: "Customizable Community Scripts",
+    description: "Share, use, and customize indicators built by our active trading community for more flexibility and options.",
+  },
+];
 
-const Features: React.FC = () => (
-  <SimpleGrid columns={[1, 3]} spacing={10} py={10}>
-    {features.map(f => (
-      <Box textAlign="center" key={f.title}>
-        <Icon as={f.icon} w={12} h={12} mb={4} color="teal.300" />
-        <Heading size="md" mb={2}>{f.title}</Heading>
-        <Text>{f.desc}</Text>
-      </Box>
-    ))}
-  </SimpleGrid>
-)
+const Features: React.FC = () => {
+  return (
+    <SimpleGrid columns={{ base: 1, md: 3 }} spacing={10}>
+      {features.map((feature, index) => (
+        <Box key={index} borderWidth="1px" borderRadius="lg" p={6} textAlign="center">
+          <Icon as={feature.icon} color="teal.500" mb={4} />
+          <Heading size="md" mb={2}>
+            {feature.title}
+          </Heading>
+          <Text color="gray.600">{feature.description}</Text>
+        </Box>
+      ))}
+    </SimpleGrid>
+  );
+};
 
-export default Features
+export default Features;
